@@ -20,9 +20,9 @@ export const translations = {
       titleMobile: "Global Vision.",
       basedIn: "Based in Lubango, Angola",
       description:
-        "I specialize in blurring the lines between design and engineering, creating highly interactive and performant web applications that stand out on a global scale.",
+        "I build fast, accessible interfaces with React, TypeScript, and Tailwind CSS — from fintech dashboards to e-commerce platforms. I care about clean architecture, smooth animations, and code that scales. Currently open to remote and hybrid roles.",
       descriptionMobile:
-        "I specialize in blurring the lines between design and engineering, creating highly interactive web applications.",
+        "Front-end developer focused on React, TypeScript, and Tailwind CSS. Building performant interfaces with clean architecture and attention to detail.",
     },
     projects: {
       title: "Selected Works.",
@@ -88,9 +88,9 @@ export const translations = {
       titleMobile: "Visão Global.",
       basedIn: "Sediado em Lubango, Angola",
       description:
-        "Especializo-me em apagar as fronteiras entre design e engenharia, criando aplicações web altamente interativas e de alta performance que se destacam em escala global.",
+        "Construo interfaces rápidas e acessíveis com React, TypeScript e Tailwind CSS — de painéis fintech a plataformas e-commerce. Preocupo-me com arquitetura limpa, animações fluidas e código escalável. Atualmente aberto a posições remotas e híbridas.",
       descriptionMobile:
-        "Especializo-me em apagar as fronteiras entre design e engenharia, criando aplicações web altamente interativas.",
+        "Desenvolvedor front-end focado em React, TypeScript e Tailwind CSS. Construindo interfaces performáticas com arquitetura limpa e atenção ao detalhe.",
     },
     projects: {
       title: "Projetos Selecionados.",

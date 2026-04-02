@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Mail } from "lucide-react";
-import { GithubIcon, LinkedinIcon, TwitterIcon } from "./Icons";
+import { GithubIcon, LinkedinIcon } from "./Icons";
 import { useLanguage } from "../context/LanguageContext";
 
 export function Contact() {
@@ -49,22 +49,20 @@ export function Contact() {
 
           <div className="flex space-x-6">
             <a
-              href="#"
+              href="https://github.com/SilesterGold9"
+              target="_blank"
+              rel="noopener noreferrer"
               className="text-subtle hover:text-heading transition-colors"
             >
               <GithubIcon size={20} />
             </a>
             <a
-              href="#"
+              href="https://www.linkedin.com/in/silvestre-dourado"
+              target="_blank"
+              rel="noopener noreferrer"
               className="text-subtle hover:text-heading transition-colors"
             >
               <LinkedinIcon size={20} />
-            </a>
-            <a
-              href="#"
-              className="text-subtle hover:text-heading transition-colors"
-            >
-              <TwitterIcon size={20} />
             </a>
           </div>
         </div>
