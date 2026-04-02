@@ -1,19 +1,47 @@
-import { Suspense, lazy, useRef, useState, useEffect } from "react";
+import { useRef, useEffect } from "react";
 import { motion } from "framer-motion";
 import { ChevronDown } from "lucide-react";
 import { useLanguage } from "../context/LanguageContext";
-
-const Globe = lazy(() => import("react-globe.gl"));
+import { useTheme } from "../context/ThemeContext";
+import createGlobe from "cobe";
 
 function HeroGlobe() {
-  const [ready, setReady] = useState(false);
-  const globeRef = useRef<any>(null);
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+  const { theme } = useTheme();
+  const isDark = theme === "dark";
 
   useEffect(() => {
-    if (globeRef.current && ready) {
-      globeRef.current.pointOfView({ lat: 10, lng: -20, altitude: 2.2 }, 0);
-    }
-  }, [ready]);
+    if (!canvasRef.current) return;
+
+    let phi = 0;
+    const globe = createGlobe(canvasRef.current, {
+      devicePixelRatio: 2,
+      width: 900,
+      height: 900,
+      phi: 0,
+      theta: 0.2,
+      dark: isDark ? 1 : 0,
+      diffuse: 1.2,
+      scale: 1,
+      mapSamples: 16000,
+      mapBrightness: isDark ? 6 : 3,
+      mapBaseBrightness: isDark ? 0 : 0.6,
+      baseColor: isDark ? [0.05, 0.05, 0.1] : [0.91, 0.89, 0.94],
+      markerColor: [0.49, 0.23, 0.93],
+      glowColor: isDark ? [0.49, 0.23, 0.93] : [0.6, 0.5, 0.9],
+      offset: [0, 0],
+      markers: [],
+    });
+
+    const onFrame = () => {
+      phi += 0.003;
+      globe.update({ phi });
+      requestAnimationFrame(onFrame);
+    };
+    requestAnimationFrame(onFrame);
+
+    return () => globe.destroy();
+  }, [isDark]);
 
   return (
     <motion.div
@@ -24,19 +52,12 @@ function HeroGlobe() {
     >
       <div className="relative w-225 h-225">
         <div className="absolute inset-0 rounded-full bg-accent/10 blur-[100px]" />
-        <Suspense fallback={null}>
-          <Globe
-            ref={globeRef}
-            width={900}
-            height={900}
-            backgroundColor="rgba(0,0,0,0)"
-            globeImageUrl="https://unpkg.com/three-globe/example/img/earth-night.jpg"
-            atmosphereColor="rgba(124, 58, 237, 0.25)"
-            atmosphereAltitude={0.14}
-            animateIn={true}
-            onGlobeReady={() => setReady(true)}
-          />
-        </Suspense>
+        <canvas
+          ref={canvasRef}
+          style={{ width: 900, height: 900 }}
+          width={1800}
+          height={1800}
+        />
       </div>
     </motion.div>
   );

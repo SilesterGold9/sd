@@ -7,28 +7,13 @@
     "summary": "A deep dive into how Server Components are reshaping frontend state management and network payloads.",
     "content": "# The Future of React Server Components\n\nReact Server Components (RSC) represent one of the most significant architectural shifts in the React ecosystem since the introduction of Hooks.\n\n## Why RSC?\n\nTraditionally, single-page applications shipped megabytes of JavaScript to the client just to render static content. RSC flips this paradigm by keeping the rendering heavy lifting strictly on the server.\n\n### Key Benefits\n- **Zero Bundle Size Impact**: Components rendered on the server add absolutely zero kilobytes to your client JS bundle.\n- **Direct Backend Access**: You can natively access databases and microservices seamlessly within your component structure.\n- **Enhanced SEO**: By delivering structured HTML right from the start, web crawlers instantly parse the complete DOM.\n\n```javascript\n// Example of a Server Component\nimport db from 'lib/database';\n\nexport default async function TopStories() {\n  const stories = await db.query('SELECT * FROM stories LIMIT 10');\n  \n  return (\n    <ul>\n      {stories.map(story => (\n        <li key={story.id}>{story.title}</li>\n      ))}\n    </ul>\n  );\n}\n```\n\nAs frameworks like Next.js continue refining the App Router experience, embracing the Server Component architecture is becoming mandatory for creating high-performance experiences without sacrifices."
   },
+
   {
     "slug": "design-systems-with-tailwind",
     "title": "Architecting Design Systems with Tailwind v4",
     "date": "March 15, 2026",
     "category": "Styling",
     "summary": "Mastering the new Tailwind CSS engine to build scalable, themeable, and perfectly typed design tokens.",
-    "content": "# Architecting Design Systems with Tailwind v4\n\nWith the release of Tailwind v4, the reliance on external configuration scripts has vanished, replaced by an elegant highly-optimized CSS directive architecture.\n\n## The Power of Native CSS Variables\n\nInstead of relying heavily on `tailwind.config.js`, v4 allows complete integration natively inside raw CSS:\n\n```css\n@theme {\n  --color-brand-500: #7c3aed;\n  --font-display: 'Space Grotesk', sans-serif;\n}\n```\n\nBy unifying standard CSS Custom Properties with Tailwind's generated utilities, building dynamic dark modes and scalable component libraries is faster and vastly more readable."
-  },
-  {
-    "slug": "open-code-a-revolution",
-    "title": "Open Code, a revolution?",
-    "date": "April 1, 2026",
-    "category": "Tech",
-    "summary": "Will Opencode take over the coding world? Let's find out.",
-    "content": "# Opencode.\n\nIt is widely known that opencode is rapidly becoming the standard for CLI agents — you can use every coding model to work with it: Claude, Gemini, Qwen, even some more obscure models."
-  },
-  {
-    "slug": "is-avilar-gayw",
-    "title": "Is avilar gayw",
-    "date": "April 1, 2026",
-    "category": "Fofoca",
-    "summary": "Yeah, he IS gay.",
-    "content": "# Meu novo post\n\nAvilar is gay?\n\n- Yes"
+    "content": "# Architecting Design Systems with Tailwind v4\n\nWith the release of Tailwind v4, the reliance on external configuration scripts has vanished, replaced by an elegant highly-optimized CSS directive architecture.\n\n## The Power of Native CSS Variables\n\nInstead of relying heavily on `tailwind.config.js`, v4 allows complete integration natively inside ***raw CSS***:\n\n```css\n@theme {\n  --color-brand-500: #7c3aed;\n  --font-display: 'Space Grotesk', sans-serif;\n}\n```\n\nBy unifying standard CSS Custom Properties with Tailwind's generated utilities, building dynamic dark modes and scalable component libraries is faster and vastly more readable.\n\n"
   }
 ]

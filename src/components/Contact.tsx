@@ -1,14 +1,17 @@
-import { motion } from 'framer-motion';
-import { Mail } from 'lucide-react';
-import { GithubIcon, LinkedinIcon, TwitterIcon } from './Icons';
-import { useLanguage } from '../context/LanguageContext';
+import { motion } from "framer-motion";
+import { Mail } from "lucide-react";
+import { GithubIcon, LinkedinIcon, TwitterIcon } from "./Icons";
+import { useLanguage } from "../context/LanguageContext";
 
 export function Contact() {
   const { t } = useLanguage();
 
   return (
-    <footer id="contact" className="bg-bg py-24 relative overflow-hidden border-t border-border">
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-accent-strong/5 rounded-full blur-[100px] pointer-events-none" />
+    <footer
+      id="contact"
+      className="bg-bg py-24 relative overflow-hidden border-t border-border"
+    >
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-150 h-150 bg-accent-strong/5 rounded-full blur-[100px] pointer-events-none" />
 
       <div className="container mx-auto px-6 relative z-10">
         <div className="flex flex-col items-center mb-16 space-y-8 text-center">
@@ -22,9 +25,9 @@ export function Contact() {
             <Mail size={32} className="text-accent" />
           </motion.div>
 
-          <h2 
-             className="text-5xl md:text-6xl font-bold font-display text-heading"
-             dangerouslySetInnerHTML={{ __html: t.contact.title }}
+          <h2
+            className="text-5xl md:text-6xl font-bold font-display text-heading"
+            dangerouslySetInnerHTML={{ __html: t.contact.title }}
           />
 
           <p className="text-muted max-w-lg mx-auto font-sans leading-relaxed">
@@ -32,7 +35,7 @@ export function Contact() {
           </p>
 
           <a
-            href="mailto:hello@example.com"
+            href="mailto:silvestredourado766@gmail.com"
             className="inline-flex items-center justify-center px-8 py-4 text-base font-bold text-white bg-accent-strong rounded-full hover:bg-accent-strong/90 transition-all font-mono hover:scale-105 active:scale-95 shadow-[0_0_20px_var(--color-glow-strong)] hover:shadow-[0_0_30px_var(--color-glow-strong)]"
           >
             {t.contact.button}
@@ -45,13 +48,22 @@ export function Contact() {
           </p>
 
           <div className="flex space-x-6">
-            <a href="#" className="text-subtle hover:text-heading transition-colors">
+            <a
+              href="#"
+              className="text-subtle hover:text-heading transition-colors"
+            >
               <GithubIcon size={20} />
             </a>
-            <a href="#" className="text-subtle hover:text-heading transition-colors">
+            <a
+              href="#"
+              className="text-subtle hover:text-heading transition-colors"
+            >
               <LinkedinIcon size={20} />
             </a>
-            <a href="#" className="text-subtle hover:text-heading transition-colors">
+            <a
+              href="#"
+              className="text-subtle hover:text-heading transition-colors"
+            >
               <TwitterIcon size={20} />
             </a>
           </div>

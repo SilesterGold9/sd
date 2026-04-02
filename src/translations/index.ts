@@ -25,7 +25,7 @@ export const translations = {
         "I specialize in blurring the lines between design and engineering, creating highly interactive web applications.",
     },
     projects: {
-      title: "Selected Works",
+      title: "Selected Works.",
       viewAll: "View all projects",
       items: [
         {
@@ -46,7 +46,7 @@ export const translations = {
       ],
     },
     skills: {
-      title: "Technical Arsenal",
+      title: "Technical Arsenal.",
       frameworks: "Frameworks",
       languages: "Languages",
       styling: "Styling",
@@ -93,7 +93,7 @@ export const translations = {
         "Especializo-me em apagar as fronteiras entre design e engenharia, criando aplicações web altamente interativas.",
     },
     projects: {
-      title: "Projetos Selecionados",
+      title: "Projetos Selecionados.",
       viewAll: "Ver todos os projetos",
       items: [
         {
@@ -114,7 +114,7 @@ export const translations = {
       ],
     },
     skills: {
-      title: "Arsenal Técnico",
+      title: "Arsenal Técnico.",
       frameworks: "Frameworks",
       languages: "Linguagens",
       styling: "Estilização",
