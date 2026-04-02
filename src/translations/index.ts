@@ -20,9 +20,23 @@ export const translations = {
       titleMobile: "Global Vision.",
       basedIn: "Based in Lubango, Angola",
       description:
-        "I build fast, accessible interfaces with React, TypeScript, and Tailwind CSS — from fintech dashboards to e-commerce platforms. I care about clean architecture, smooth animations, and code that scales. Currently open to remote and hybrid roles.",
+        "I build fast, accessible interfaces with React, TypeScript, and Tailwind CSS. I care about clean architecture, smooth animations, and code that scales. Currently open to remote and hybrid roles.",
       descriptionMobile:
         "Front-end developer focused on React, TypeScript, and Tailwind CSS. Building performant interfaces with clean architecture and attention to detail.",
+    },
+    about: {
+      title: "Beyond the Code.",
+      intro:
+        "When I'm not building interfaces, I'm solving algorithmic problems. Competitive programming has shaped the way I think — breaking complex problems into clean, efficient solutions. In 2025, my team represented our college at the AOCPC national round, where we earned a podium spot and brought home a medal.",
+      galleryTitle: "AOCPC 2025 — National Round",
+      galleryDescription:
+        "Moments from the Angola Open Collegiate Programming Contest, held at the national level. My team competed against colleges from across the country.",
+      achievementsTitle: "Achievements",
+      achievementsDescription:
+        "Certificates from the AOCPC local rounds at our college.",
+      cert1: "1st Place — AOCPC Local Round 2025",
+      cert2: "2nd Place — AOCPC Local Round 2024",
+      cert3: "Honorable Mention — AOCPC Local Round 2024",
     },
     projects: {
       title: "Selected Works.",
@@ -88,9 +102,23 @@ export const translations = {
       titleMobile: "Visão Global.",
       basedIn: "Sediado em Lubango, Angola",
       description:
-        "Construo interfaces rápidas e acessíveis com React, TypeScript e Tailwind CSS — de painéis fintech a plataformas e-commerce. Preocupo-me com arquitetura limpa, animações fluidas e código escalável. Atualmente aberto a posições remotas e híbridas.",
+        "Construo interfaces rápidas e acessíveis com React, TypeScript e Tailwind CSS. Preocupo-me com arquitetura limpa, animações fluidas e código escalável. Atualmente aberto a posições remotas e híbridas.",
       descriptionMobile:
         "Desenvolvedor front-end focado em React, TypeScript e Tailwind CSS. Construindo interfaces performáticas com arquitetura limpa e atenção ao detalhe.",
+    },
+    about: {
+      title: "Além do Código.",
+      intro:
+        "Quando não estou a construir interfaces, estou a resolver problemas algorítmicos. A programação competitiva moldou a minha forma de pensar — dividir problemas complexos em soluções limpas e eficientes. Em 2025, a minha equipa representou a faculdade na ronda nacional do AOCPC, onde conquistámos um lugar no pódio e trouxemos uma medalha.",
+      galleryTitle: "AOCPC 2025 — Ronda Nacional",
+      galleryDescription:
+        "Momentos do Angola Open Collegiate Programming Contest, realizado a nível nacional. A minha equipa competiu contra faculdades de todo o país.",
+      achievementsTitle: "Conquistas",
+      achievementsDescription:
+        "Certificados das rondas locais do AOCPC na nossa faculdade.",
+      cert1: "1º Lugar — Ronda Local AOCPC 2025",
+      cert2: "2º Lugar — Ronda Local AOCPC 2024",
+      cert3: "Menção Honrosa — Ronda Local AOCPC 2024",
     },
     projects: {
       title: "Projetos Selecionados.",
