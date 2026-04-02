@@ -1,5 +1,6 @@
 import { lazy, Suspense } from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
+import { Analytics } from '@vercel/analytics/react';
 import { Navigation } from './components/Navigation';
 import { Contact } from './components/Contact';
 import { CustomCursor } from './components/CustomCursor';
@@ -43,6 +44,7 @@ function App() {
       <ThemeProvider>
         <LanguageProvider>
           <AppShell />
+          <Analytics />
         </LanguageProvider>
       </ThemeProvider>
     </Router>
