@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useRef, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import ReactMarkdown from 'react-markdown';
@@ -7,28 +7,75 @@ import { useLanguage } from '../context/LanguageContext';
 import { getPostBySlug } from '../data/postStore';
 
 function ReadingProgress() {
-  const [progress, setProgress] = useState(0);
+  const barRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    let rafId: number;
     const handleScroll = () => {
-      const el = document.documentElement;
-      const scrollTop = el.scrollTop || document.body.scrollTop;
-      const scrollHeight = el.scrollHeight - el.clientHeight;
-      setProgress(scrollHeight > 0 ? (scrollTop / scrollHeight) * 100 : 0);
+      cancelAnimationFrame(rafId);
+      rafId = requestAnimationFrame(() => {
+        if (!barRef.current) return;
+        const el = document.documentElement;
+        const scrollTop = el.scrollTop || document.body.scrollTop;
+        const scrollHeight = el.scrollHeight - el.clientHeight;
+        const pct = scrollHeight > 0 ? (scrollTop / scrollHeight) * 100 : 0;
+        barRef.current.style.width = `${pct}%`;
+      });
     };
     window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      cancelAnimationFrame(rafId);
+    };
   }, []);
 
   return (
     <div className="fixed top-0 left-0 w-full h-1 z-[60] bg-border">
       <div
-        className="h-full bg-accent-strong transition-[width] duration-75 ease-out"
-        style={{ width: `${progress}%` }}
+        ref={barRef}
+        className="h-full bg-accent-strong will-change-[width]"
+        style={{ width: '0%' }}
       />
     </div>
   );
 }
+
+const markdownComponents: React.ComponentProps<typeof ReactMarkdown>['components'] = {
+  h1: (props) => <h1 className="text-3xl md:text-4xl font-bold font-display text-heading mt-16 mb-8 first:mt-0 leading-tight" {...props} />,
+  h2: (props) => <h2 className="text-2xl md:text-3xl font-bold font-display text-heading mt-14 mb-6 border-b border-border pb-3" {...props} />,
+  h3: (props) => <h3 className="text-xl font-bold font-display text-accent mt-10 mb-4" {...props} />,
+  p: (props) => <p className="text-body text-lg leading-relaxed mb-6" {...props} />,
+  ul: (props) => <ul className="list-disc pl-6 text-body mb-6 space-y-2" {...props} />,
+  ol: (props) => <ol className="list-decimal pl-6 text-body mb-6 space-y-2" {...props} />,
+  li: (props) => <li className="text-body font-sans leading-relaxed" {...props} />,
+  strong: (props) => <strong className="text-heading font-bold" {...props} />,
+  em: (props) => <em className="text-muted" {...props} />,
+  a: (props) => <a className="text-accent underline decoration-accent/40 hover:decoration-accent hover:text-accent-strong transition-colors" target="_blank" rel="noreferrer" {...props} />,
+  blockquote: (props) => (
+    <blockquote className="border-l-4 border-accent-strong pl-6 my-8 text-muted italic bg-surface/50 py-4 rounded-r-lg" {...props} />
+  ),
+  hr: () => <hr className="border-border my-12" />,
+  img: (props) => <img className="rounded-xl border border-border my-8 w-full" loading="lazy" {...props} />,
+  code: ({ className, children, ...props }) => {
+    const isBlock = /language-(\w+)/.test(className || '');
+    return isBlock ? (
+      <div className="my-8 rounded-xl overflow-hidden border border-border">
+        <div className="bg-surface px-4 py-2 border-b border-border">
+          <span className="text-xs font-mono text-subtle uppercase tracking-wider">
+            {(className || '').match(/language-(\w+)/)?.[1]}
+          </span>
+        </div>
+        <pre className="bg-bg p-6 overflow-x-auto">
+          <code className="text-body font-mono text-sm leading-relaxed">{children}</code>
+        </pre>
+      </div>
+    ) : (
+      <code className="bg-surface text-accent px-1.5 py-0.5 rounded text-sm font-mono" {...props}>
+        {children}
+      </code>
+    );
+  }
+};
 
 export function BlogPost() {
   const { slug } = useParams();
@@ -80,46 +127,8 @@ export function BlogPost() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.2, duration: 0.5 }}
-          className="prose-custom"
         >
-          <ReactMarkdown
-            components={{
-              h1: (props) => <h1 className="text-3xl md:text-4xl font-bold font-display text-heading mt-16 mb-8 first:mt-0 leading-tight" {...props} />,
-              h2: (props) => <h2 className="text-2xl md:text-3xl font-bold font-display text-heading mt-14 mb-6 border-b border-border pb-3" {...props} />,
-              h3: (props) => <h3 className="text-xl font-bold font-display text-accent mt-10 mb-4" {...props} />,
-              p: (props) => <p className="text-body text-lg leading-relaxed mb-6" {...props} />,
-              ul: (props) => <ul className="list-disc pl-6 text-body mb-6 space-y-2" {...props} />,
-              ol: (props) => <ol className="list-decimal pl-6 text-body mb-6 space-y-2" {...props} />,
-              li: (props) => <li className="text-body font-sans leading-relaxed" {...props} />,
-              strong: (props) => <strong className="text-heading font-bold" {...props} />,
-              em: (props) => <em className="text-muted" {...props} />,
-              a: (props) => <a className="text-accent underline decoration-accent/40 hover:decoration-accent hover:text-accent-strong transition-colors" target="_blank" rel="noreferrer" {...props} />,
-              blockquote: (props) => (
-                <blockquote className="border-l-4 border-accent-strong pl-6 my-8 text-muted italic bg-surface/50 py-4 rounded-r-lg" {...props} />
-              ),
-              hr: () => <hr className="border-border my-12" />,
-              img: (props) => <img className="rounded-xl border border-border my-8 w-full" loading="lazy" {...props} />,
-              code: ({ className, children, ...props }) => {
-                const isBlock = /language-(\w+)/.test(className || '');
-                return isBlock ? (
-                  <div className="my-8 rounded-xl overflow-hidden border border-border">
-                    <div className="bg-surface px-4 py-2 border-b border-border">
-                      <span className="text-xs font-mono text-subtle uppercase tracking-wider">
-                        {(className || '').match(/language-(\w+)/)?.[1]}
-                      </span>
-                    </div>
-                    <pre className="bg-bg p-6 overflow-x-auto">
-                      <code className="text-body font-mono text-sm leading-relaxed">{children}</code>
-                    </pre>
-                  </div>
-                ) : (
-                  <code className="bg-surface text-accent px-1.5 py-0.5 rounded text-sm font-mono" {...props}>
-                    {children}
-                  </code>
-                );
-              }
-            }}
-          >
+          <ReactMarkdown components={markdownComponents}>
             {post.content}
           </ReactMarkdown>
         </motion.div>

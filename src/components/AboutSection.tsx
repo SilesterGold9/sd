@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { useLanguage } from "../context/LanguageContext";
-import { Award } from "lucide-react";
+import { Award, Download } from "lucide-react";
 
 import pfp from "../assets/aocpc25/pfp.jpg";
 import meInLabWide from "../assets/aocpc25/me-in-the-lab-with-team-Wide.jpg";
@@ -13,6 +13,9 @@ import trophy from "../assets/aocpc25/Trophy.jpg";
 import cert1st from "../assets/certificates/FirstPlaceICPC.JPG";
 import cert2nd from "../assets/certificates/SecondPlaceAOCPC.JPG";
 import certHM from "../assets/certificates/HonorableMentionAOCPC.JPG";
+
+import cvEn from "../assets/cv/Silvestre Dourado - English.pdf";
+import cvPt from "../assets/cv/Silvestre Dourado PT.pdf";
 
 const galleryImages = [
   { src: meInLabWide, alt: "In the lab with the team", span: "md:col-span-2" },
@@ -44,17 +47,37 @@ export function AboutSection() {
         </motion.div>
 
         {/* Intro + featured photo */}
-        <div className="flex flex-col lg:flex-row gap-12 items-center mb-24">
+        <div className="flex flex-col lg:flex-row gap-12 items-center mb-12">
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="w-full lg:w-1/2"
+            className="w-full lg:w-1/2 space-y-6"
           >
             <p className="text-lg text-muted font-sans leading-relaxed">
               {t.about.intro}
             </p>
+
+            {/* CV Downloads */}
+            <div className="flex flex-wrap gap-3">
+              <a
+                href={cvEn}
+                download
+                className="inline-flex items-center gap-2 px-5 py-2.5 text-sm font-mono font-bold text-heading bg-surface border border-border rounded-full hover:border-accent/50 hover:text-accent transition-all"
+              >
+                <Download size={14} />
+                {t.about.downloadCv} — {t.about.cvEn}
+              </a>
+              <a
+                href={cvPt}
+                download
+                className="inline-flex items-center gap-2 px-5 py-2.5 text-sm font-mono font-bold text-heading bg-surface border border-border rounded-full hover:border-accent/50 hover:text-accent transition-all"
+              >
+                <Download size={14} />
+                {t.about.downloadCv} — {t.about.cvPt}
+              </a>
+            </div>
           </motion.div>
 
           <motion.div

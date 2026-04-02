@@ -28,6 +28,9 @@ export const translations = {
       title: "Beyond the Code.",
       intro:
         "When I'm not building interfaces, I'm solving algorithmic problems. Competitive programming has shaped the way I think — breaking complex problems into clean, efficient solutions. In 2025, my team represented our college at the AOCPC national round, where we earned a podium spot and brought home a medal.",
+      downloadCv: "Download CV",
+      cvEn: "English",
+      cvPt: "Português",
       galleryTitle: "AOCPC 2025 — National Round",
       galleryDescription:
         "Moments from the Angola Open Collegiate Programming Contest, held at the national level. My team competed against colleges from across the country.",
@@ -100,6 +103,9 @@ export const translations = {
       title: "Além do Código.",
       intro:
         "Quando não estou a construir interfaces, estou a resolver problemas algorítmicos. A programação competitiva moldou a minha forma de pensar — dividir problemas complexos em soluções limpas e eficientes. Em 2025, a minha equipa representou a faculdade na ronda nacional do AOCPC, onde conquistámos um lugar no pódio e trouxemos uma medalha.",
+      downloadCv: "Descargar CV",
+      cvEn: "English",
+      cvPt: "Português",
       galleryTitle: "AOCPC 2025 — Ronda Nacional",
       galleryDescription:
         "Momentos do Angola Open Collegiate Programming Contest, realizado a nível nacional. A minha equipa competiu contra faculdades de todo o país.",

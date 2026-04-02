@@ -1,3 +1,4 @@
+import { useMemo } from 'react';
 import { motion } from 'framer-motion';
 import { useLanguage } from '../context/LanguageContext';
 import { Link } from 'react-router-dom';
@@ -6,7 +7,7 @@ import { getAllPosts } from '../data/postStore';
 
 export function BlogList() {
   const { t } = useLanguage();
-  const posts = getAllPosts();
+  const posts = useMemo(() => getAllPosts(), []);
 
   return (
     <div className="pt-32 pb-24 min-h-screen bg-bg">
