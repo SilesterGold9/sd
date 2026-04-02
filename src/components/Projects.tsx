@@ -1,106 +1,101 @@
 import { motion } from "framer-motion";
-import { ExternalLink, MonitorPlay, Smartphone } from "lucide-react";
-import { GithubIcon } from "./Icons";
-import { cn } from "../utils/cn";
-
+import { ExternalLink } from "lucide-react";
 import { useLanguage } from "../context/LanguageContext";
+
+import folioVideo from "../assets/projects/folio/Folio Load.mp4";
+import folioOnboard from "../assets/projects/folio/Folio Onboard.png";
+
+const tags = ["React", "TypeScript", "Tailwind CSS", "Vite"];
 
 export function Projects() {
   const { t } = useLanguage();
-
-  const projects = t.projects.items.map((item, i) => ({
-    ...item,
-    tags:
-      i === 0
-        ? ["Next.js", "Tailwind CSS", "Framer Motion"]
-        : i === 1
-          ? ["React", "TypeScript", "Stripe"]
-          : ["Vite", "React", "OpenAI API"],
-    icon: i === 1 ? Smartphone : MonitorPlay,
-    link: "#",
-    github: "#",
-  }));
+  const project = t.projects.items[0];
 
   return (
     <section id="projects" className="py-24 bg-bg">
       <div className="container mx-auto px-6">
+        {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="mb-16 md:flex justify-between items-end"
+          className="mb-16"
         >
-          <div>
-            <h2 className="text-4xl md:text-5xl font-bold font-display text-heading mb-4">
-              {t.projects.title}
-            </h2>
-            <div className="w-20 h-1 bg-accent-strong rounded-full" />
-          </div>
-          <a
-            href="#"
-            className="hidden md:flex items-center gap-2 text-accent hover:text-accent-strong font-mono transition-colors group"
-          >
-            {t.projects.viewAll}
-            <span className="transform transition-transform group-hover:translate-x-1">
-              -&gt;
-            </span>
-          </a>
+          <h2 className="text-4xl md:text-5xl font-bold font-display text-heading mb-4">
+            {t.projects.title}
+          </h2>
+          <div className="w-20 h-1 bg-accent-strong rounded-full" />
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {projects.map((project, i) => (
-            <motion.div
-              key={project.title}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.1, duration: 0.5 }}
-              whileHover={{ y: -8 }}
-              className={cn(
-                "group relative p-8 glass rounded-2xl overflow-hidden transition-all duration-300",
-                "hover:border-accent/30 ",
-              )}
+        <div className="flex flex-col lg:flex-row gap-12 items-start">
+          {/* Media column */}
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="w-full lg:w-3/5 space-y-6"
+          >
+            {/* Video */}
+            <div className="rounded-2xl overflow-hidden border border-border shadow-lg">
+              <video
+                src={folioVideo}
+                autoPlay
+                muted
+                loop
+                playsInline
+                className="w-full h-auto block"
+              />
+            </div>
+
+            {/* Onboarding screenshot */}
+            <div className="rounded-2xl overflow-hidden border border-border shadow-lg">
+              <img
+                src={folioOnboard}
+                alt="Folio onboarding screen"
+                className="w-full h-auto block"
+              />
+            </div>
+          </motion.div>
+
+          {/* Info column */}
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="w-full lg:w-2/5 lg:sticky lg:top-24"
+          >
+            <h3 className="text-3xl md:text-4xl font-bold font-display text-heading mb-4">
+              {project.title}
+            </h3>
+
+            <p className="text-lg text-muted font-sans leading-relaxed mb-8">
+              {project.description}
+            </p>
+
+            <div className="flex flex-wrap gap-2 mb-8">
+              {tags.map((tag) => (
+                <span
+                  key={tag}
+                  className="px-3 py-1 text-xs font-mono text-body bg-surface rounded-full border border-border"
+                >
+                  {tag}
+                </span>
+              ))}
+            </div>
+
+            <a
+              href="https://folio-sil.vercel.app/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-6 py-3 text-sm font-bold font-mono text-white bg-accent-strong rounded-full hover:bg-accent-strong/90 transition-all hover:scale-105 active:scale-95 shadow-[0_0_20px_var(--color-glow-strong)] hover:shadow-[0_0_30px_var(--color-glow-strong)]"
             >
-              <div className="flex justify-between items-start mb-8 text-muted group-hover:text-accent transition-colors">
-                <project.icon size={32} strokeWidth={1.5} />
-                <div className="flex gap-4">
-                  <a
-                    href={project.github}
-                    className="hover:text-heading transition-colors"
-                    aria-label="Github"
-                  >
-                    <GithubIcon size={20} />
-                  </a>
-                  <a
-                    href={project.link}
-                    className="hover:text-heading transition-colors"
-                    aria-label="Live link"
-                  >
-                    <ExternalLink size={20} />
-                  </a>
-                </div>
-              </div>
-
-              <h3 className="text-2xl font-bold font-display text-heading mb-3">
-                {project.title}
-              </h3>
-              <p className="text-muted mb-8 font-sans leading-relaxed">
-                {project.description}
-              </p>
-
-              <div className="flex flex-wrap gap-2 mt-auto">
-                {project.tags.map((tag) => (
-                  <span
-                    key={tag}
-                    className="px-3 py-1 text-xs font-mono text-body bg-surface rounded-full border border-border"
-                  >
-                    {tag}
-                  </span>
-                ))}
-              </div>
-            </motion.div>
-          ))}
+              {t.projects.viewLive}
+              <ExternalLink size={16} />
+            </a>
+          </motion.div>
         </div>
       </div>
     </section>

@@ -40,22 +40,12 @@ export const translations = {
     },
     projects: {
       title: "Selected Works.",
-      viewAll: "View all projects",
+      viewLive: "View Live",
       items: [
         {
-          title: "Fintech Dashboard",
+          title: "Folio",
           description:
-            "A modern financial dashboard with real-time data visualization and secure transactions.",
-        },
-        {
-          title: "E-Commerce Platform",
-          description:
-            "A scalable e-commerce solution built for high-performance mobile and desktop shopping.",
-        },
-        {
-          title: "AI Productivity Tool",
-          description:
-            "Smart task management application integrating LLM APIs for automated organization.",
+            "A fast, minimal note-taking app built for focus. Organize your thoughts with folders, rich text editing, and instant search — all in a clean distraction-free interface.",
         },
       ],
     },
@@ -122,22 +112,12 @@ export const translations = {
     },
     projects: {
       title: "Projetos Selecionados.",
-      viewAll: "Ver todos os projetos",
+      viewLive: "Ver ao Vivo",
       items: [
         {
-          title: "Painel Fintech",
+          title: "Folio",
           description:
-            "Um painel financeiro moderno com visualização de dados em tempo real e transações seguras.",
-        },
-        {
-          title: "Plataforma E-Commerce",
-          description:
-            "Uma solução de e-commerce escalável desenvolvida para compras em alta performance no mobile e desktop.",
-        },
-        {
-          title: "Ferramenta de Produtividade com IA",
-          description:
-            "Aplicação de gerenciamento inteligente de tarefas integrando APIs de LLMs para organização automatizada.",
+            "Uma aplicação de notas rápida e minimalista, feita para foco. Organize as suas ideias com pastas, edição de texto enriquecido e pesquisa instantânea — tudo numa interface limpa e sem distrações.",
         },
       ],
     },

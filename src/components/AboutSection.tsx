@@ -2,24 +2,25 @@ import { motion } from "framer-motion";
 import { useLanguage } from "../context/LanguageContext";
 import { Award } from "lucide-react";
 
-import meWithTeam from "../assets/aocpc25/MeWithTeam.jpg";
-import meDuringICPC from "../assets/aocpc25/MeDuringICPC.jpg";
+import pfp from "../assets/aocpc25/pfp.jpg";
+import meInLabWide from "../assets/aocpc25/me-in-the-lab-with-team-Wide.jpg";
+import usInLabWide from "../assets/aocpc25/us-in-the-lab-with-team-Wide.jpg";
+import duringContestFront from "../assets/aocpc25/during-contest-front.jpg";
 import podium from "../assets/aocpc25/Podium.jpg";
 import medal from "../assets/aocpc25/Medal.jpg";
 import trophy from "../assets/aocpc25/Trophy.jpg";
-import allTeams from "../assets/aocpc25/AllCollegeTeams.jpg";
 
 import cert1st from "../assets/certificates/FirstPlaceICPC.JPG";
 import cert2nd from "../assets/certificates/SecondPlaceAOCPC.JPG";
 import certHM from "../assets/certificates/HonorableMentionAOCPC.JPG";
 
 const galleryImages = [
-  { src: meDuringICPC, alt: "During the competition", span: "md:col-span-2 md:row-span-2" },
+  { src: meInLabWide, alt: "In the lab with the team", span: "md:col-span-2" },
+  { src: usInLabWide, alt: "Team in the lab", span: "md:col-span-2" },
+  { src: duringContestFront, alt: "During the contest", span: "" },
   { src: podium, alt: "On the podium", span: "" },
-  { src: trophy, alt: "Trophy", span: "" },
   { src: medal, alt: "Medal", span: "" },
-  { src: allTeams, alt: "All college teams", span: "" },
-  { src: meWithTeam, alt: "With teammates", span: "md:col-span-2" },
+  { src: trophy, alt: "Trophy", span: "" },
 ];
 
 export function AboutSection() {
@@ -61,13 +62,13 @@ export function AboutSection() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="w-full lg:w-1/2"
+            className="w-full lg:w-1/2 flex justify-center"
           >
-            <div className="rounded-2xl overflow-hidden border border-border">
+            <div className="rounded-2xl overflow-hidden border border-border w-full max-w-sm">
               <img
-                src={meDuringICPC}
-                alt="Silvestre during the ICPC competition"
-                className="w-full h-80 object-cover object-top"
+                src={pfp}
+                alt="Silvestre Dourado"
+                className="w-full h-96 object-cover object-center"
               />
             </div>
           </motion.div>
@@ -88,23 +89,31 @@ export function AboutSection() {
             {t.about.galleryDescription}
           </p>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 auto-rows-[12rem] md:auto-rows-[14rem]">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 auto-rows-[10rem] md:auto-rows-[14rem]">
             {galleryImages.map((img, i) => (
               <motion.div
                 key={img.alt}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                initial={{ opacity: 0, y: 30, scale: 0.95 }}
+                whileInView={{ opacity: 1, y: 0, scale: 1 }}
                 viewport={{ once: true }}
-                transition={{ delay: i * 0.1, duration: 0.5 }}
+                transition={{ delay: i * 0.08, duration: 0.5, ease: "easeOut" }}
                 className={img.span}
               >
-                <div className="w-full h-full rounded-xl overflow-hidden border border-border group cursor-pointer">
+                <motion.div
+                  whileHover={{ y: -6, scale: 1.02 }}
+                  transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                  className="w-full h-full rounded-xl overflow-hidden border border-border/50 cursor-pointer relative group shadow-sm hover:shadow-xl hover:shadow-accent/10 hover:border-accent/30 transition-shadow duration-300"
+                >
                   <img
                     src={img.src}
                     alt={img.alt}
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110"
                   />
-                </div>
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  <p className="absolute bottom-3 left-4 right-4 text-white text-sm font-mono opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-300">
+                    {img.alt}
+                  </p>
+                </motion.div>
               </motion.div>
             ))}
           </div>
@@ -139,17 +148,19 @@ export function AboutSection() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.15, duration: 0.5 }}
-                className="glass rounded-2xl overflow-hidden group"
+                whileHover={{ y: -4 }}
               >
-                <div className="aspect-[4/3] overflow-hidden">
-                  <img
-                    src={cert.src}
-                    alt={cert.label}
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                  />
-                </div>
-                <div className="p-4">
-                  <p className="text-sm font-mono text-heading">{cert.label}</p>
+                <div className="glass rounded-2xl overflow-hidden group cursor-pointer hover:border-accent/30 transition-colors duration-300">
+                  <div className="aspect-[4/3] overflow-hidden">
+                    <img
+                      src={cert.src}
+                      alt={cert.label}
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
+                  </div>
+                  <div className="p-4">
+                    <p className="text-sm font-mono text-heading">{cert.label}</p>
+                  </div>
                 </div>
               </motion.div>
             ))}
