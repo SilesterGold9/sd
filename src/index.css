@@ -1,0 +1,110 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+@import "tailwindcss";
+@import "@uiw/react-md-editor/markdown-editor.css";
+@import "@uiw/react-markdown-preview/markdown.css";
+
+/* ══════════════════════════════════════════════
+   Semantic Color Tokens (dark mode defaults)
+   All components use these via Tailwind utilities:
+   bg-bg, bg-surface, text-heading, text-accent, etc.
+   Light mode overrides swap the values via [data-theme="light"].
+   ══════════════════════════════════════════════ */
+@theme {
+  --font-sans: 'Inter', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+  --font-display: 'Space Grotesk', sans-serif;
+
+  /* ── Backgrounds ── */
+  --color-bg: #020617;
+  --color-surface: #0f172a;
+
+  /* ── Accent ── */
+  --color-accent: #8b5cf6;
+  --color-accent-strong: #7c3aed;
+
+  /* ── Text ── */
+  --color-heading: #f8fafc;
+  --color-body: #cbd5e1;
+  --color-muted: #94a3b8;
+  --color-subtle: #64748b;
+
+  /* ── Borders ── */
+  --color-border: #1e293b;
+  --color-border-strong: #334155;
+
+  /* ── Glow / decoration ── */
+  --color-glow: rgba(124, 58, 237, 0.2);
+  --color-glow-strong: rgba(124, 58, 237, 0.4);
+}
+
+/* ══════════════════════════════════════════════
+   Light Mode Overrides
+   ══════════════════════════════════════════════ */
+[data-theme="light"] {
+  --color-bg: #f8f7f4;
+  --color-surface: #ffffff;
+
+  --color-accent: #7c3aed;
+  --color-accent-strong: #6d28d9;
+
+  --color-heading: #0f172a;
+  --color-body: #334155;
+  --color-muted: #475569;
+  --color-subtle: #64748b;
+
+  --color-border: #e2e8f0;
+  --color-border-strong: #cbd5e1;
+
+  --color-glow: rgba(124, 58, 237, 0.08);
+  --color-glow-strong: rgba(124, 58, 237, 0.15);
+}
+
+/* ══════════════════════════════════════════════
+   Base Styles
+   ══════════════════════════════════════════════ */
+@layer base {
+  body {
+    background-color: var(--color-bg);
+    color: var(--color-body);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+  }
+
+  code, pre {
+    font-family: var(--font-mono);
+  }
+
+  ::selection {
+    background-color: rgba(124, 58, 237, 0.3);
+    color: inherit;
+  }
+}
+
+/* ══════════════════════════════════════════════
+   Glass Effect (theme-aware)
+   ══════════════════════════════════════════════ */
+.glass {
+  background: rgba(15, 23, 42, 0.4);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+[data-theme="light"] .glass {
+  background: rgba(255, 255, 255, 0.6);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+/* ══════════════════════════════════════════════
+   Admin Editor (always dark — independent of theme)
+   ══════════════════════════════════════════════ */
+[data-theme="light"] .wmde-markdown,
+[data-theme="light"] .w-md-editor {
+  color-scheme: dark;
+}
