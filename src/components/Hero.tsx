@@ -23,7 +23,7 @@ function HeroGlobe() {
       dark: isDark ? 1 : 0,
       diffuse: 1.2,
       scale: 1,
-      mapSamples: 16000,
+      mapSamples: 8000,
       mapBrightness: isDark ? 6 : 1.2,
       mapBaseBrightness: isDark ? 0 : 0.8,
       baseColor: isDark ? [0.05, 0.05, 0.1] : [0.88, 0.86, 0.92],
@@ -82,7 +82,7 @@ export function Hero() {
           transition={{ duration: 0.8 }}
           className="space-y-6 max-w-4xl"
         >
-          <h1 className="text-6xl md:text-8xl lg:text-9xl font-bold font-display tracking-tighter leading-none text-heading">
+          <h1 className="text-5xl sm:text-6xl md:text-8xl lg:text-9xl font-bold font-display tracking-tighter leading-none text-heading">
             {t.hero.title}
           </h1>
 

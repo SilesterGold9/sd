@@ -27,7 +27,7 @@ export function AboutSection() {
   const { t } = useLanguage();
 
   return (
-    <section id="about-me" className="py-24 bg-surface relative overflow-hidden">
+    <section id="about" className="py-24 bg-surface relative overflow-hidden">
       <div className="container mx-auto px-6">
         {/* Header */}
         <motion.div
@@ -68,6 +68,7 @@ export function AboutSection() {
               <img
                 src={pfp}
                 alt="Silvestre Dourado"
+                loading="lazy"
                 className="w-full h-96 object-cover object-center"
               />
             </div>
@@ -89,7 +90,7 @@ export function AboutSection() {
             {t.about.galleryDescription}
           </p>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 auto-rows-[10rem] md:auto-rows-[14rem]">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 auto-rows-[8rem] sm:auto-rows-[10rem] md:auto-rows-[14rem]">
             {galleryImages.map((img, i) => (
               <motion.div
                 key={img.alt}
@@ -97,7 +98,7 @@ export function AboutSection() {
                 whileInView={{ opacity: 1, y: 0, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.08, duration: 0.5, ease: "easeOut" }}
-                className={img.span}
+                className={img.span ? `hidden md:block ${img.span}` : ""}
               >
                 <motion.div
                   whileHover={{ y: -6, scale: 1.02 }}
@@ -107,6 +108,7 @@ export function AboutSection() {
                   <img
                     src={img.src}
                     alt={img.alt}
+                    loading="lazy"
                     className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
@@ -155,6 +157,7 @@ export function AboutSection() {
                     <img
                       src={cert.src}
                       alt={cert.label}
+                      loading="lazy"
                       className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                     />
                   </div>

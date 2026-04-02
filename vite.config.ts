@@ -1,7 +1,6 @@
-import { defineConfig } from 'vite'
+import { defineConfig, mergeConfig } from 'vitest/config'
 import react from '@vitejs/plugin-react'
 import tailwindcss from '@tailwindcss/vite'
-import { mergeConfig } from 'vitest/config'
 
 // https://vite.dev/config/
 export default mergeConfig(
@@ -10,12 +9,26 @@ export default mergeConfig(
       tailwindcss(),
       react()
     ],
+    build: {
+      rollupOptions: {
+        output: {
+          manualChunks(id: string) {
+            if (id.includes('node_modules/framer-motion')) {
+              return 'framer-motion';
+            }
+            if (id.includes('node_modules/cobe')) {
+              return 'cobe';
+            }
+          },
+        },
+      },
+    },
   }),
-  {
+  defineConfig({
     test: {
       globals: true,
       environment: 'jsdom',
       setupFiles: './src/setupTests.ts',
     },
-  }
+  })
 )

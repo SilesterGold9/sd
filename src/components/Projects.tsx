@@ -2,7 +2,6 @@ import { motion } from "framer-motion";
 import { ExternalLink } from "lucide-react";
 import { useLanguage } from "../context/LanguageContext";
 
-import folioVideo from "../assets/projects/folio/Folio Load.mp4";
 import folioOnboard from "../assets/projects/folio/Folio Onboard.png";
 
 const tags = ["React", "TypeScript", "Tailwind CSS", "Vite"];
@@ -28,54 +27,42 @@ export function Projects() {
           <div className="w-20 h-1 bg-accent-strong rounded-full" />
         </motion.div>
 
-        <div className="flex flex-col lg:flex-row gap-12 items-start">
-          {/* Media column */}
+        <div className="flex flex-col lg:flex-row gap-12 items-center">
+          {/* Image */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="w-full lg:w-3/5 space-y-6"
+            className="w-full lg:w-3/5"
           >
-            {/* Video */}
-            <div className="rounded-2xl overflow-hidden border border-border shadow-lg">
-              <video
-                src={folioVideo}
-                autoPlay
-                muted
-                loop
-                playsInline
-                className="w-full h-auto block"
-              />
-            </div>
-
-            {/* Onboarding screenshot */}
-            <div className="rounded-2xl overflow-hidden border border-border shadow-lg">
+            <div className="rounded-2xl overflow-hidden border border-border shadow-lg hover:shadow-xl hover:shadow-accent/10 transition-shadow duration-500">
               <img
                 src={folioOnboard}
                 alt="Folio onboarding screen"
+                loading="lazy"
                 className="w-full h-auto block"
               />
             </div>
           </motion.div>
 
-          {/* Info column */}
+          {/* Info */}
           <motion.div
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="w-full lg:w-2/5 lg:sticky lg:top-24"
+            className="w-full lg:w-2/5 lg:sticky lg:top-24 space-y-6"
           >
-            <h3 className="text-3xl md:text-4xl font-bold font-display text-heading mb-4">
+            <h3 className="text-3xl md:text-4xl font-bold font-display text-heading">
               {project.title}
             </h3>
 
-            <p className="text-lg text-muted font-sans leading-relaxed mb-8">
+            <p className="text-lg text-muted font-sans leading-relaxed">
               {project.description}
             </p>
 
-            <div className="flex flex-wrap gap-2 mb-8">
+            <div className="flex flex-wrap gap-2">
               {tags.map((tag) => (
                 <span
                   key={tag}

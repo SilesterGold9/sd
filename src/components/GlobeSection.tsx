@@ -78,7 +78,6 @@ export function GlobeSection() {
 
   return (
     <section
-      id="about"
       className="py-24 relative overflow-hidden bg-surface border-t border-border"
     >
       {isDesktop ? (

@@ -8,6 +8,9 @@ export function CustomCursor() {
   const { theme } = useTheme();
 
   useEffect(() => {
+    const mql = window.matchMedia("(min-width: 768px)");
+    if (!mql.matches) return;
+
     const handleMouseMove = (e: MouseEvent) => {
       setPosition({ x: e.clientX, y: e.clientY });
 
