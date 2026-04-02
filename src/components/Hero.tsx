@@ -24,9 +24,9 @@ function HeroGlobe() {
       diffuse: 1.2,
       scale: 1,
       mapSamples: 16000,
-      mapBrightness: isDark ? 6 : 3,
-      mapBaseBrightness: isDark ? 0 : 0.6,
-      baseColor: isDark ? [0.05, 0.05, 0.1] : [0.91, 0.89, 0.94],
+      mapBrightness: isDark ? 6 : 1.2,
+      mapBaseBrightness: isDark ? 0 : 0.8,
+      baseColor: isDark ? [0.05, 0.05, 0.1] : [0.88, 0.86, 0.92],
       markerColor: [0.49, 0.23, 0.93],
       glowColor: isDark ? [0.49, 0.23, 0.93] : [0.6, 0.5, 0.9],
       offset: [0, 0],
@@ -48,13 +48,13 @@ function HeroGlobe() {
       initial={{ opacity: 0, scale: 0.8 }}
       animate={{ opacity: 1, scale: 1 }}
       transition={{ delay: 0.5, duration: 2, ease: "easeOut" }}
-      className="absolute right-[-15vw] top-1/2 -translate-y-1/2 pointer-events-none z-0 hidden lg:block"
+      className="absolute right-[-38vw] top-[-15vh] h-[130vh] pointer-events-none z-0 hidden lg:block"
     >
-      <div className="relative w-225 h-225">
+      <div className="relative h-full aspect-square">
         <div className="absolute inset-0 rounded-full bg-accent/10 blur-[100px]" />
         <canvas
           ref={canvasRef}
-          style={{ width: 900, height: 900 }}
+          className="w-full h-full"
           width={1800}
           height={1800}
         />

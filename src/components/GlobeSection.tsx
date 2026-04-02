@@ -44,9 +44,9 @@ export function GlobeSection() {
       diffuse: 1.2,
       scale: 1,
       mapSamples: 16000,
-      mapBrightness: isDark ? 6 : 3,
-      mapBaseBrightness: isDark ? 0 : 0.6,
-      baseColor: isDark ? [0.05, 0.05, 0.1] : [0.91, 0.89, 0.94],
+      mapBrightness: isDark ? 6 : 1.2,
+      mapBaseBrightness: isDark ? 0 : 0.8,
+      baseColor: isDark ? [0.05, 0.05, 0.1] : [0.88, 0.86, 0.92],
       markerColor: [0.49, 0.23, 0.93],
       glowColor: isDark
         ? [0.49, 0.23, 0.93]
